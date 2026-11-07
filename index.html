@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mulheres da minha vida</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Lato:wght@300;400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --fundo: #fbf7f2;
+    --texto: #3d3430;
+    --suave: #8a7a70;
+    --dourado: #b8915a;
+    --rosa: #e9d5cc;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--fundo);
+    color: var(--texto);
+    font-family: 'Lato', sans-serif;
+    font-weight: 300;
+    line-height: 1.8;
+  }
+
+  /* Abertura */
+  .abertura {
+    min-height: 100vh;
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    text-align: center; padding: 2rem;
+    background: radial-gradient(circle at 50% 40%, #fff 0%, var(--fundo) 60%, var(--rosa) 140%);
+  }
+  .abertura .pre { letter-spacing: .35em; text-transform: uppercase; font-size: .8rem; color: var(--dourado); }
+  .abertura h1 {
+    font-family: 'Cormorant Garamond', serif; font-weight: 400;
+    font-size: clamp(2.6rem, 8vw, 5.5rem); line-height: 1.1; margin: 1rem 0 1.5rem;
+  }
+  .abertura p.intro {
+    font-family: 'Cormorant Garamond', serif; font-style: italic;
+    font-size: clamp(1.2rem, 3vw, 1.6rem); max-width: 34rem; color: var(--suave);
+  }
+  .colar { display: flex; gap: .6rem; margin: 2.5rem 0; }
+  .colar span {
+    width: 14px; height: 14px; border-radius: 50%;
+    background: var(--dourado); opacity: .8;
+    animation: brilho 3s ease-in-out infinite;
+  }
+  .colar span:nth-child(2) { animation-delay: .4s; }
+  .colar span:nth-child(3) { animation-delay: .8s; }
+  .colar span:nth-child(4) { animation-delay: 1.2s; }
+  @keyframes brilho { 50% { opacity: .3; transform: scale(.8); } }
+  .seta { margin-top: 1rem; color: var(--suave); font-size: .85rem; letter-spacing: .2em; text-decoration: none; animation: flutua 2s ease-in-out infinite; }
+  @keyframes flutua { 50% { transform: translateY(8px); } }
+
+  /* Seções */
+  .mulher {
+    max-width: 1050px; margin: 0 auto;
+    padding: 6rem 1.5rem;
+    display: grid; grid-template-columns: 1fr 1.2fr; gap: 4rem; align-items: center;
+  }
+  .mulher:nth-of-type(even) .foto { order: 2; }
+  .foto { position: relative; }
+  .foto img {
+    width: 100%; aspect-ratio: 4/5; object-fit: cover;
+    border-radius: 200px 200px 12px 12px;
+    box-shadow: 0 25px 50px -20px rgba(61,52,48,.35);
+  }
+  .foto::after {
+    content: ''; position: absolute; inset: -14px;
+    border: 1px solid var(--dourado); opacity: .5;
+    border-radius: 214px 214px 20px 20px; pointer-events: none;
+  }
+  .rotulo { letter-spacing: .3em; text-transform: uppercase; font-size: .78rem; color: var(--dourado); }
+  .mulher h2 {
+    font-family: 'Cormorant Garamond', serif; font-weight: 600;
+    font-size: clamp(2.2rem, 5vw, 3.4rem); line-height: 1.1; margin: .4rem 0 .2rem;
+  }
+  .papel { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 1.5rem; color: var(--suave); margin-bottom: 1.5rem; }
+  .mulher p.texto { font-size: 1.08rem; }
+  .mulher p.texto strong { font-weight: 400; color: var(--dourado); }
+
+  .divisor { text-align: center; color: var(--dourado); letter-spacing: 1rem; opacity: .6; }
+
+  /* Fechamento */
+  .fechamento {
+    text-align: center; padding: 8rem 1.5rem 6rem;
+    background: linear-gradient(180deg, var(--fundo), var(--rosa));
+  }
+  .coracao-moldura { width: min(460px, 90vw); height: auto; margin-bottom: 2.5rem; filter: drop-shadow(0 20px 30px rgba(61,52,48,.25)); }
+  .quatro { display: flex; justify-content: center; margin-bottom: 3rem; }
+  .quatro img {
+    width: 90px; height: 90px; border-radius: 50%; object-fit: cover;
+    border: 3px solid var(--fundo); margin: 0 -10px;
+    box-shadow: 0 8px 20px -8px rgba(0,0,0,.3);
+  }
+  .palavras { font-family: 'Cormorant Garamond', serif; font-size: clamp(1.6rem, 4vw, 2.4rem); letter-spacing: .05em; margin-bottom: 1.5rem; }
+  .palavras span { color: var(--dourado); }
+  .fechamento p.final {
+    font-family: 'Cormorant Garamond', serif; font-style: italic;
+    font-size: clamp(1.2rem, 3vw, 1.5rem); max-width: 36rem; margin: 0 auto; color: var(--texto);
+  }
+  .coracao { font-size: 2rem; margin-top: 2rem; animation: bate 1.6s ease-in-out infinite; display: inline-block; }
+  @keyframes bate { 15%, 45% { transform: scale(1.15); } 30% { transform: scale(1); } }
+
+  /* Animação de entrada */
+  .revelar { opacity: 0; transform: translateY(40px); transition: opacity 1.2s ease, transform 1.2s ease; }
+  .revelar.visivel { opacity: 1; transform: none; }
+
+  @media (max-width: 760px) {
+    .mulher { grid-template-columns: 1fr; gap: 2.5rem; padding: 4rem 1.5rem; }
+    .mulher:nth-of-type(even) .foto { order: 0; }
+    .foto { max-width: 340px; margin: 0 auto; width: 100%; }
+    .mulher .info { text-align: center; }
+    .quatro img { width: 70px; height: 70px; }
+  }
+</style>
+</head>
+<body>
+
+<header class="abertura">
+  <div class="pre">Uma homenagem</div>
+  <h1>Mulheres da<br>minha vida</h1>
+  <p class="intro">Ninguém chega a lugar nenhum sozinho. Eu cheguei até aqui porque quatro mulheres caminharam comigo.</p>
+  <div class="colar"><span></span><span></span><span></span><span></span></div>
+  <a class="seta" href="#nilza">ROLE PARA BAIXO ↓</a>
+</header>
+
+<section class="mulher revelar" id="nilza">
+  <div class="foto"><img src="fotos/nilza.png" alt="Vó Nilza" style="object-position: 50% 30%"></div>
+  <div class="info">
+    <div class="rotulo">Minhas raízes</div>
+    <h2>Vó Nilza</h2>
+    <div class="papel">minha avó</div>
+    <p class="texto">Vó, foi você quem me criou e me educou. Cada valor que eu carrego, cada "obrigado", "por favor" e cada escolha certa que eu faço tem um pouco das suas mãos. Você me deu o começo de tudo. O homem que eu sou hoje começou a ser construído na sua casa, com o seu cuidado e a sua paciência. <strong>Obrigado pelos valores que você me ensinou.</strong></p>
+  </div>
+</section>
+
+<div class="divisor">• • •</div>
+
+<section class="mulher revelar" id="ana-paula">
+  <div class="foto"><img src="fotos/ana-paula.jpg" alt="Ana Paula" style="object-position: 60% 30%"></div>
+  <div class="info">
+    <div class="rotulo">Minha fé</div>
+    <h2>Ana Paula</h2>
+    <div class="papel">minha mãe</div>
+    <p class="texto">Mãe, a gente nem sempre se entendeu, e tudo bem. Eu sei que a sua história não foi fácil. Mesmo assim, você nunca deixou de me amar e nunca desistiu de ser minha mãe. E esse seu bom humor, que deixa tudo mais leve, é uma das coisas que eu mais amo em você. Você me deu o presente mais importante que alguém poderia me dar: <strong>a fé em Deus</strong>. Isso eu vou levar para a vida toda e ensinar aos meus filhos. Assim, o seu amor vai atravessar gerações. Você provou, sim, que é uma boa mãe.</p>
+  </div>
+</section>
+
+<div class="divisor">• • •</div>
+
+<section class="mulher revelar" id="nanci">
+  <div class="foto"><img src="fotos/nanci.jpg" alt="Tia Nanci" style="object-position: 50% 20%"></div>
+  <div class="info">
+    <div class="rotulo">Minha força</div>
+    <h2>Tia Nanci</h2>
+    <div class="papel">minha madrinha</div>
+    <p class="texto">Tia Nanci, você é uma das pessoas mais fortes que eu conheço. É independente, sabe o que quer e vai atrás, e é você quem me inspira a ser assim também. A gente pensa parecido e se dá bem de um jeito que não precisa de explicação. Mesmo sem nos vermos sempre, quando a gente se encontra é como se nunca tivesse passado tempo nenhum. <strong>Obrigado por ser exemplo e parceria.</strong></p>
+  </div>
+</section>
+
+<div class="divisor">• • •</div>
+
+<section class="mulher revelar" id="carol">
+  <div class="foto"><img src="fotos/carol.webp" alt="Carol" style="object-position: 30% 40%"></div>
+  <div class="info">
+    <div class="rotulo">Meu amor</div>
+    <h2>Carol</h2>
+    <div class="papel">minha namorada, minha esposa de coração</div>
+    <p class="texto">Carol, você é a pessoa que sempre está lá. Nos meus piores dias, você não mediu esforços para me fazer sentir melhor. Nos melhores, estava ao meu lado comemorando. Já são mais de dez anos juntos, e a gente continua apaixonado como dois namorados que acabaram de começar. Ainda não temos papel assinado, mas no meu coração você já é minha esposa há muito tempo. Você é a pessoa mais importante da minha vida. <strong>Obrigado por me escolher todos os dias.</strong></p>
+  </div>
+</section>
+
+<footer class="fechamento revelar">
+  <svg class="coracao-moldura" viewBox="-20 -20 440 420" role="img" aria-label="Vó Nilza, Ana Paula, Tia Nanci e Carol juntas em um coração">
+    <defs>
+      <clipPath id="coracao">
+        <path d="M200 370 C 70 280, 0 195, 0 115 C 0 48, 50 0, 112 0 C 152 0, 185 22, 200 58 C 215 22, 248 0, 288 0 C 350 0, 400 48, 400 115 C 400 195, 330 280, 200 370 Z"/>
+      </clipPath>
+    </defs>
+    <g clip-path="url(#coracao)">
+      <image href="fotos/nilza.png" x="0" y="0" width="200" height="190" preserveAspectRatio="xMidYMin slice"/>
+      <image href="fotos/ana-paula.jpg" x="200" y="0" width="200" height="190" preserveAspectRatio="xMidYMid slice"/>
+      <image href="fotos/nanci-coracao.jpg" x="0" y="190" width="200" height="180" preserveAspectRatio="xMidYMid slice"/>
+      <image href="fotos/carol.webp" x="200" y="190" width="200" height="180" preserveAspectRatio="xMinYMid slice"/>
+      <line x1="200" y1="0" x2="200" y2="380" stroke="#fbf7f2" stroke-width="5"/>
+      <line x1="0" y1="190" x2="400" y2="190" stroke="#fbf7f2" stroke-width="5"/>
+    </g>
+    <path d="M200 370 C 70 280, 0 195, 0 115 C 0 48, 50 0, 112 0 C 152 0, 185 22, 200 58 C 215 22, 248 0, 288 0 C 350 0, 400 48, 400 115 C 400 195, 330 280, 200 370 Z" fill="none" stroke="#b8915a" stroke-width="3"/>
+    <path transform="translate(200 185) scale(1.05) translate(-200 -185)" d="M200 370 C 70 280, 0 195, 0 115 C 0 48, 50 0, 112 0 C 152 0, 185 22, 200 58 C 215 22, 248 0, 288 0 C 350 0, 400 48, 400 115 C 400 195, 330 280, 200 370 Z" fill="none" stroke="#b8915a" stroke-width="1" opacity=".5"/>
+  </svg>
+  <div class="palavras"><span>Raízes</span>, fé, <span>força</span> e amor.</div>
+  <p class="final">Cada uma de vocês me deu uma parte de quem eu sou. Esta homenagem é pouco perto do que eu sinto, mas é de coração. Amo vocês.</p>
+  <div class="coracao">🤍</div>
+</footer>
+
+<script>
+  const obs = new IntersectionObserver(entradas => {
+    entradas.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visivel'); obs.unobserve(e.target); } });
+  }, { threshold: 0.15 });
+  document.querySelectorAll('.revelar').forEach(el => obs.observe(el));
+</script>
+</body>
+</html>
